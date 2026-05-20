@@ -338,3 +338,14 @@ p{
 .voltar:hover{
     color: #616161 !important;
 }
+
+.navegacao{
+
+    color: black;
+    text-decoration: none;
+}
+
+.navegacao-hover{
+
+    color: #0a3a5a!important;
+}
