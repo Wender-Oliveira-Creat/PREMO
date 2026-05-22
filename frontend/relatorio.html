@@ -1,54 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="relatorio.css">
-    <title>Relatorios</title>
+
+    <title>Relatórios</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body>
 
+<body class="bg-[#f6fafa] flex justify-center">
 
-    <div>
-        <header>Relatorios</header>
+    <div class="w-full max-w-[420px] min-h-screen pb-20">
+
+        <!-- HEADER -->
+        <header class="sticky top-0 bg-white shadow-sm p-4 flex justify-between items-center">
+            <h1 class="font-bold text-xl text-[#002f4b]">Relatórios</h1>
+            <span>👤</span>
+            <h2 id="nomeUsuario" class="text-sm text-gray-500 font-bold"></h2>
+        </header>
+
+        <!-- MAIN -->
+        <main id="relatorioPDF" class="p-4 space-y-4">
+
+            <!-- CARDS -->
+            <div class="grid grid-cols-2 gap-3">
+
+                <div class="bg-white p-3 rounded-xl shadow border-l-4 border-[#002f4b]">
+                    <p class="text-xs font-bold">Sistólica</p>
+                    <h2 class="text-2xl font-black text-[#002f4b]">125</h2>
+                    <span class="text-xs text-gray-500">mmHg</span>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl shadow border-l-4 border-[#01466c]">
+                    <p class="text-xs font-bold">Diastólica</p>
+                    <h2 class="text-2xl font-black text-[#01466c]">82</h2>
+                    <span class="text-xs text-gray-500">mmHg</span>
+                </div>
+
+            </div>
+
+            <!-- STATUS -->
+            <div class="bg-green-100 p-3 rounded-xl border-l-4 border-green-500">
+                <h3 class="font-bold text-green-800">Pressão Normal</h3>
+                <p class="text-sm text-green-700">Dentro do esperado</p>
+            </div>
+
+            <!-- CHART -->
+            <div class="bg-gray-100 p-4 rounded-xl">
+                <h3 class="font-bold mb-2 text-[#002f4b]">Evolução</h3>
+                <canvas id="grafico"></canvas>
+            </div>
+
+            <!-- RELATORIO COMPLETO -->
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-[#01466c] space-y-3">
+
+                <div>
+                    <h3 class="font-bold text-[#002f4b]">Relatório completo</h3>
+                    <p class="text-sm text-gray-600">
+                        Dados detalhados do último mês com análise da pressão arterial.
+                    </p>
+                </div>
+
+                <button onclick="gerarPDF()"
+                    class="w-full flex items-center justify-center gap-2 bg-[#002f4b] text-white p-3 rounded-lg font-bold shadow">
+                    📄 Exportar PDF
+                </button>
+            </div>
+
+        </main>
+
+        <!-- NAV -->
+        <nav class="fixed bottom-0 w-full max-w-[420px] bg-white flex justify-around p-3 border-t">
+
+            <a href="relatorio.html" class="flex flex-col items-center text-[#002f4b] font-bold">
+                📊
+                <span class="text-[10px]">Relatórios</span>
+            </a>
+
+            <a href="alerta.html" class="flex flex-col items-center text-gray-500">
+                ⚠
+                <span class="text-[10px]">Alerta</span>
+            </a>
+
+            <div class="flex flex-col items-center text-gray-400">
+                🕒
+                <span class="text-[10px]">Histórico</span>
+                <span class="text-[8px]">em breve</span>
+            </div>
+
+            <div class="flex flex-col items-center text-gray-400">
+                ⚙
+                <span class="text-[10px]">Ajustes</span>
+                <span class="text-[8px]">em breve</span>
+            </div>
+
+        </nav>
+
     </div>
-    
 
-    <div class="caixa-mae-abas">
-        <button class="botao-aba-ativo">7 DIAS</button>
-        <button class="botao-aba">30 DIAS</button>
-        <button class="botao-aba">TUDO</button>
-    </div>
-
-
-    <div class="medicao">
-
-
-        <div class="card alta"> 
-            <span class="nivel">ALTA</span>
-            <span class="numero">125</span>
-            <span class="medicao-unidade">mmHg</span>
-        </div>
-
-
-        <div class="card baixa">
-            <span class="nivel">BAIXA</span>
-            <span class="numero">82</span>
-            <span class="mediacao-unidade">mmHg</span>
-        </div>
-
-
-    </div> <div class="historico">
-
-
-        <div class="linha-historico status-normal">
-            <span class="historico-data">17 Mai, 08:30</span> 
-            <span class="historico-valor">120/80</span> 
-            <span class="historico-status">NORMAL</span> 
-        </div>
-
-        
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
