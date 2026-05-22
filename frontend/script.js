@@ -11,7 +11,7 @@ const boxBaixa = document.getElementById("box-baixa");
 
 const botoes = document.querySelectorAll(".teclado button");
 
-// alternar
+// alternar campo
 boxAlta.addEventListener("click", () => {
     campoAtual = "alta";
     boxAlta.classList.add("ativa");
@@ -41,7 +41,6 @@ botoes.forEach(botao => {
 
             displayAlta.innerHTML = (valorAlta || 0) + " <small>mmHg</small>";
         }
-
         else{
 
             if(texto === "⌫"){
@@ -54,8 +53,15 @@ botoes.forEach(botao => {
             displayBaixa.innerHTML = (valorBaixa || 0) + " <small>mmHg</small>";
         }
 
+        // SALVAR
         if(texto === "✔"){
-            alert(`Alta: ${valorAlta} | Baixa: ${valorBaixa}`);
+
+            localStorage.setItem("pressao", JSON.stringify({
+                alta: valorAlta,
+                baixa: valorBaixa
+            }));
+
+            alert("Medição salva!");
         }
 
     });
