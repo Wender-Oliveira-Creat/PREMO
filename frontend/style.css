@@ -132,15 +132,40 @@ label {
 }
 
 /* TOPO */
-.topo {
+.topo{
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
 }
 
-.topo h2 {
+.topo h2{
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+
     color: #022f4d;
+}
+
+.bvoltar{
+    width: 45px;
+    height: 45px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+    color: black;
+
+    font-size: 24px;
+}
+
+.bvoltar:hover{
+    transform: scale(1.05);
+    background: #f0f0f0;
 }
 
 /* PRESSÃO */
@@ -220,7 +245,18 @@ label {
     color: #022f4d;
     font-weight: bold;
 }
+ 
 
+.navegacao{
+
+    color: black;
+    text-decoration: none;
+}
+
+.navegacao-hover{
+
+    color: #0a3a5a!important;
+}
 /* ===================================================== */
 /* ==================== RELATÓRIO ======================= */
 /* ===================================================== */
@@ -264,4 +300,80 @@ label {
     color: white;
     border-radius: 8px;
     margin-top: 15px;
+}
+
+/* CARD */
+.card{
+    background: white;
+    width: 390px;
+    padding: 40px;
+    border-radius: 18px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    position: relative;
+}
+
+/* LOGO */
+.logo{
+    width: 140px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* BOTÃO VOLTAR */
+.voltar{
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: #022f4d;
+
+    transition: 0.3s;
+}
+
+.voltar:hover{
+    background: #e4e4e4;
+    transform: scale(1.05);
+}
+
+/* INPUT FOCUS */
+.input-box:focus-within{
+    border-color: #0d5d93;
+
+    box-shadow: 0 0 0 3px rgba(10,58,90,0.1);
+}
+
+/* BOTÃO */
+.btn-login{
+    margin-top: 10px;
+
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background: #033f67;
+}
+
+/* RESPONSIVO */
+@media (max-width: 500px){
+
+    .card{
+        width: 95%;
+        padding: 30px 25px;
+    }
+
 }
