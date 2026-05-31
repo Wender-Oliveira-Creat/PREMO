@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,12 @@
         Pressão dentro do normal
     </div>
 
-    <button class="btn-pdf" onclick="gerarPDF()">Exportar PDF</button>
+    <!-- 🔥 GRÁFICO -->
+    <canvas id="grafico" style="margin-top:20px;"></canvas>
+
+    <button class="btn-pdf" onclick="gerarPDF()">
+        Exportar PDF
+    </button>
 
     <!-- MENU -->
     <div class="menu">
@@ -40,6 +45,9 @@
     </div>
 
 </div>
+
+<!-- 🔥 IMPORTANTE: CHART.JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>

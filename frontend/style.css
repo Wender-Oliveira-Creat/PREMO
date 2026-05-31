@@ -376,4 +376,14 @@ label {
         padding: 30px 25px;
     }
 
+.pressao-box h1 {
+    font-size: 28px;
+    margin-top: 5px;
+    color: #022f4d; /* cor padrão */
+}
+
+.pressao-box.ativa h1 {
+    color: #ffffff; /* quando selecionado */
+}
+
 }
