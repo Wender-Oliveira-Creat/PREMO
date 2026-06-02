@@ -7,19 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="relatorio">
 
 <div class="container">
 
-    <h2>Histórico de Medições</h2>
+    <!-- HEADER -->
+    <div class="header-relatorio">
+        <h2>Histórico de Medições</h2>
+    </div>
 
+    <!-- BOTÃO LIMPAR -->
+    <button onclick="limparHistorico()" class="btn-pdf">
+        Limpar Histórico
+    </button>
+
+    <!-- LISTA -->
     <div id="lista-historico"></div>
 
+    <!-- MENU -->
     <div class="menu">
-        <a href="index.html">Início</a>
-        <a href="relatorio.html">Relatório</a>
-        <a href="medicao.html">Medir</a>
-        <a href="alerta.html">Alerta</a>
+        <a href="index.html" class="navegacao">Início</a>
+        <a href="relatorio.html" class="navegacao">Relatório</a>
+        <a href="medicao.html" class="navegacao">Medir</a>
+        <a href="alerta.html" class="navegacao">Alerta</a>
         <span class="ativo">Histórico</span>
     </div>
 

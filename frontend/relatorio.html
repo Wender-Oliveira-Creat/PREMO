@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -11,20 +11,32 @@
 
 <div class="container">
 
+    <!-- HEADER -->
     <div class="header-relatorio">
         <h2>Relatórios</h2>
     </div>
 
+    <!-- ÚLTIMA MEDIÇÃO -->
     <div class="card-relatorio">
         <p>Sistólica</p>
         <h2 id="valor-alta-relatorio">0</h2>
+        <small>mmHg</small>
     </div>
 
     <div class="card-relatorio">
         <p>Diastólica</p>
         <h2 id="valor-baixa-relatorio">0</h2>
+        <small>mmHg</small>
     </div>
 
+    <!-- 🔥 MÉDIA -->
+    <div class="card-relatorio">
+        <p>Média</p>
+        <h2 id="media-pressao">0/0</h2>
+        <small>mmHg</small>
+    </div>
+
+    <!-- STATUS -->
     <div class="status-normal">
         Pressão dentro do normal
     </div>
@@ -32,6 +44,7 @@
     <!-- 🔥 GRÁFICO -->
     <canvas id="grafico" style="margin-top:20px;"></canvas>
 
+    <!-- BOTÃO PDF -->
     <button class="btn-pdf" onclick="gerarPDF()">
         Exportar PDF
     </button>
@@ -42,16 +55,19 @@
         <span class="ativo">Relatório</span>
         <a href="medicao.html" class="navegacao">Medir</a>
         <a href="alerta.html" class="navegacao">Alerta</a>
+        <a href="historico.html" class="navegacao">Histórico</a>
     </div>
 
 </div>
 
-<!-- 🔥 IMPORTANTE: CHART.JS -->
+<!-- 🔥 CHART -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+<!-- JS -->
 <script src="relatorio.js"></script>
 
 </body>

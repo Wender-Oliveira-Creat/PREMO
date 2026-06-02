@@ -6,6 +6,7 @@ const historico = JSON.parse(localStorage.getItem("historico")) || [];
 const alta = document.getElementById("valor-alta-relatorio");
 const baixa = document.getElementById("valor-baixa-relatorio");
 const status = document.querySelector(".status-normal");
+const mediaElemento = document.getElementById("media-pressao");
 
 // ================= MOSTRAR ÚLTIMA MEDIÇÃO =================
 if (dados) {
@@ -38,17 +39,45 @@ if (dados) {
     status.innerText = "Sem dados";
 }
 
+// ================= MÉDIA INTELIGENTE =================
+if (historico.length > 0) {
+
+    let somaAlta = 0;
+    let somaBaixa = 0;
+
+    historico.forEach(item => {
+        somaAlta += parseInt(item.alta);
+        somaBaixa += parseInt(item.baixa);
+    });
+
+    const mediaAlta = Math.round(somaAlta / historico.length);
+    const mediaBaixa = Math.round(somaBaixa / historico.length);
+
+    mediaElemento.innerText = `${mediaAlta}/${mediaBaixa}`;
+
+    // 🔥 MESMA LÓGICA DO STATUS
+    if (mediaAlta >= 140 || mediaBaixa >= 90) {
+        mediaElemento.style.color = "red";
+    } 
+    else if (mediaAlta >= 120 || mediaBaixa >= 80) {
+        mediaElemento.style.color = "orange";
+    } 
+    else {
+        mediaElemento.style.color = "green";
+    }
+
+} else {
+    mediaElemento.innerText = "0/0";
+}
+
 // ================= GRÁFICO =================
-
-// pegar dados do histórico
 const labels = historico.map(item => item.data);
-const dadosAlta = historico.map(item => item.alta);
-const dadosBaixa = historico.map(item => item.baixa);
+const dadosAlta = historico.map(item => parseInt(item.alta));
+const dadosBaixa = historico.map(item => parseInt(item.baixa));
 
-// criar gráfico
 const ctx = document.getElementById("grafico");
 
-if (ctx) {
+if (ctx && historico.length > 0) {
     new Chart(ctx, {
         type: "line",
         data: {
@@ -69,12 +98,7 @@ if (ctx) {
             ]
         },
         options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true
-                }
-            }
+            responsive: true
         }
     });
 }
