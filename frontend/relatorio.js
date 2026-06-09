@@ -70,6 +70,127 @@ if (historico.length > 0) {
     mediaElemento.innerText = "0/0";
 }
 
+// ================= ESTATÍSTICAS =================
+
+const totalMedicoes = document.getElementById("total-medicoes");
+const melhorPressao = document.getElementById("melhor-pressao");
+const piorPressao = document.getElementById("pior-pressao");
+const tendencia = document.getElementById("tendencia");
+
+if (historico.length > 0) {
+
+    // total
+    totalMedicoes.innerText = historico.length;
+
+    // melhor e pior
+    let melhor = historico[0];
+    let pior = historico[0];
+
+    historico.forEach(item => {
+
+        const somaAtual =
+            parseInt(item.alta) +
+            parseInt(item.baixa);
+
+        const somaMelhor =
+            parseInt(melhor.alta) +
+            parseInt(melhor.baixa);
+
+        const somaPior =
+            parseInt(pior.alta) +
+            parseInt(pior.baixa);
+
+        if (somaAtual < somaMelhor) {
+            melhor = item;
+        }
+
+        if (somaAtual > somaPior) {
+            pior = item;
+        }
+    });
+
+    melhorPressao.innerText =
+        `${melhor.alta}/${melhor.baixa}`;
+
+    piorPressao.innerText =
+        `${pior.alta}/${pior.baixa}`;
+
+    // tendência
+    if (historico.length >= 2) {
+
+        const ultima =
+            historico[historico.length - 1];
+
+        const anterior =
+            historico[historico.length - 2];
+
+        const somaUltima =
+            parseInt(ultima.alta) +
+            parseInt(ultima.baixa);
+
+        const somaAnterior =
+            parseInt(anterior.alta) +
+            parseInt(anterior.baixa);
+
+        if (somaUltima > somaAnterior) {
+            tendencia.innerText = "📈 Subindo";
+        }
+        else if (somaUltima < somaAnterior) {
+            tendencia.innerText = "📉 Melhorando";
+        }
+        else {
+            tendencia.innerText = "➖ Estável";
+        }
+
+    } else {
+        tendencia.innerText = "Dados insuficientes";
+    }
+
+}
+
+// ================= TENDÊNCIA =================
+
+const tendenciaElemento = document.getElementById("tendencia");
+
+if (historico.length >= 2) {
+
+    const primeira = historico[0];
+    const ultima = historico[historico.length - 1];
+
+    const valorPrimeira =
+        parseInt(primeira.alta) +
+        parseInt(primeira.baixa);
+
+    const valorUltima =
+        parseInt(ultima.alta) +
+        parseInt(ultima.baixa);
+
+    if (valorUltima < valorPrimeira) {
+
+        tendenciaElemento.innerText = "📈 Melhorando";
+        tendenciaElemento.style.color = "green";
+
+    }
+    else if (valorUltima > valorPrimeira) {
+
+        tendenciaElemento.innerText = "📉 Piorando";
+        tendenciaElemento.style.color = "red";
+
+    }
+    else {
+
+        tendenciaElemento.innerText = "➡️ Estável";
+        tendenciaElemento.style.color = "#b45309";
+
+    }
+
+}
+else {
+
+    tendenciaElemento.innerText = "Dados insuficientes";
+
+}
+
 // ================= GRÁFICO =================
 const labels = historico.map(item => item.data);
 const dadosAlta = historico.map(item => parseInt(item.alta));
