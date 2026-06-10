@@ -2,6 +2,56 @@ const lista = document.getElementById("lista-historico");
 
 let historico = JSON.parse(localStorage.getItem("historico")) || [];
 
+const totalMedicoes =
+    document.getElementById("total-medicoes");
+
+const mediaAlta =
+    document.getElementById("media-alta");
+
+const mediaBaixa =
+    document.getElementById("media-baixa");
+
+const ultimaMedicao =
+    document.getElementById("ultima-medicao");
+
+if (historico.length > 0) {
+
+    const somaAlta =
+        historico.reduce(
+            (total, item) =>
+                total + parseInt(item.alta),
+            0
+        );
+
+    const somaBaixa =
+        historico.reduce(
+            (total, item) =>
+                total + parseInt(item.baixa),
+            0
+        );
+
+    const mediaAltaValor =
+        (somaAlta / historico.length).toFixed(0);
+
+    const mediaBaixaValor =
+        (somaBaixa / historico.length).toFixed(0);
+
+    const ultima =
+        historico[historico.length - 1];
+
+    totalMedicoes.innerHTML =
+        `Total de medições: ${historico.length}`;
+
+    mediaAlta.innerHTML =
+        `Média sistólica: ${mediaAltaValor} mmHg`;
+
+    mediaBaixa.innerHTML =
+        `Média diastólica: ${mediaBaixaValor} mmHg`;
+
+    ultimaMedicao.innerHTML =
+        `Última medição: ${ultima.alta}/${ultima.baixa}`;
+}
+
 historico.reverse();
 
 if (historico.length === 0) {
