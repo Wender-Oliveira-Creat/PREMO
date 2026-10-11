@@ -6,6 +6,12 @@ Sistema web desenvolvido para auxiliar no acompanhamento da pressão arterial, p
 
 O PREMO é um projeto acadêmico desenvolvido durante a graduação em Sistemas de Informação. A proposta é oferecer uma interface simples e organizada para facilitar o acompanhamento das medições de pressão arterial.
 
+## Demonstração
+
+### Tela de login
+
+![Tela de login do PREMO](tela%20-%20login%20-%20PREMO.png)
+
 ## Funcionalidades
 
 - Registro e consulta de medições
